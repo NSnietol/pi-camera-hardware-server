@@ -10,5 +10,5 @@ def take_picture():
     camera.start_preview()
     # Camera warm-up time
     sleep(2)
-    camera.capture('../matricula.jpg')
+    camera.capture('matricula.jpg')
     logger.info("it took the picture")

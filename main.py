@@ -34,7 +34,7 @@ settings()
 async def get_picture_controller():
     logger.info("Picture in progress ...")
     take_picture()
-    return FileResponse('matricula.jpg')
+    return FileResponse('src/components/matricula.jpg')
 
 
 
