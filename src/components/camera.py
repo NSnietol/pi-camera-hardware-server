@@ -12,3 +12,4 @@ def take_picture():
     sleep(2)
     camera.capture('matricula.jpg')
     logger.info("it took the picture")
+    camera.close()
