@@ -7,7 +7,7 @@ from loguru import logger
 
 from src.components.camera import take_picture
 from fastapi.responses import FileResponse
-
+from src.components.sensor_util import start_sensor
 
 def settings():
     HOST = os.environ.get(
@@ -28,7 +28,7 @@ def settings():
 
 app = FastAPI()
 settings()
-
+start_sensor()
 
 @app.get("/get-picture/")
 async def get_picture_controller():

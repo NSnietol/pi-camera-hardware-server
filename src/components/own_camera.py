@@ -1,6 +1,7 @@
 from time import sleep
 from picamera import PiCamera
 from loguru import logger
+import os
 
 
 def take_picture():
@@ -9,7 +10,13 @@ def take_picture():
     logger.info("Camera setting ok")
     camera.start_preview()
     # Camera warm-up time
-    sleep(2)
+    remove_old_file()
+    sleep(1)
     camera.capture('matricula.jpg')
     logger.info("it took the picture")
     camera.close()
+
+def remove_old_file():
+    if( os.path.exists('matricula.jpg')):
+        os.remove('matricula.jpg')
+
