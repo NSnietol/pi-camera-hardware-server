@@ -30,7 +30,7 @@ def check_movements():
 
 def notify_by_picture():
     logger.info("notify_by_picture !!")
-    HOST = os.environ.get('API_SERVER_HOST') if 'API_SERVER_HOST' in os.environ else 'http://127.0.0.1:9090/raspberry/api/v1/accesos/registro-acceso-vehicular'
+    HOST = os.environ.get('API_SERVER_HOST') if 'API_SERVER_HOST' in os.environ else 'http://192.168.1.7:9090/raspberry/api/v1/accesos/registro-acceso-vehicular'
     logger.info("Host {0}",HOST)
     for index in range(3):
         try:
