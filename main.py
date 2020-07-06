@@ -41,7 +41,6 @@ async def get_picture_controller():
     return FileResponse('matricula.jpg')
 
 
-
 @app.get("/")
 async def main():
     content = """

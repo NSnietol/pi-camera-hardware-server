@@ -4,7 +4,7 @@ from loguru import logger
 import os
 import requests
 from src.components.own_camera import take_picture
-from src.components.thread_util import execute_background
+
 from http import HTTPStatus
 
 IO.setwarnings(False)
@@ -16,7 +16,7 @@ def check_movements():
     logger.info('check_movements starting ..')
     while True:
         try:
-            if(IO.input(8) == True):
+            if(IO.input(8) == False):
                 logger.info("Obstacle detected !!")
                 take_picture()
                 notify_by_picture()
