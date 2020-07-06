@@ -1,13 +1,17 @@
 
 import os
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException,BackgroundTasks
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
+import uvicorn
+import threading
+import time
 
-from src.components.camera import take_picture
+from src.components.own_camera import take_picture
 from fastapi.responses import FileResponse
-from src.components.sensor_util import start_sensor
+from src.components.sensor_util import check_movements
+
 
 def settings():
     HOST = os.environ.get(
@@ -28,7 +32,7 @@ def settings():
 
 app = FastAPI()
 settings()
-start_sensor()
+
 
 @app.get("/get-picture/")
 async def get_picture_controller():
@@ -52,3 +56,13 @@ async def main():
              
                     """
     return HTMLResponse(content=content)
+
+
+if __name__ == '__main__':
+    x = threading.Thread(target=check_movements)
+    x.start()
+    print('uvicorn')
+    uvicorn.run(app)
+    print('End')
+
+
