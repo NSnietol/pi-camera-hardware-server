@@ -40,6 +40,10 @@ async def get_picture_controller():
     take_picture()
     return FileResponse('matricula.jpg')
 
+@app.get("/unlock/")
+async def unlock_door():
+    logger.info("Opening door in progress ...")
+    return {"message": "Door opened"}
 
 @app.get("/")
 async def main():
@@ -60,8 +64,8 @@ async def main():
 if __name__ == '__main__':
     x = threading.Thread(target=check_movements)
     x.start()
-    print('uvicorn')
+    logger.info('uvicorn')
     uvicorn.run(app)
-    print('End')
+    logger.info('End')
 
 
