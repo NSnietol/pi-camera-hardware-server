@@ -32,6 +32,9 @@ def settings():
 
 app = FastAPI()
 settings()
+checking_thread= threading.Thread(target=check_movements)
+checking_thread.start()
+
 
 
 @app.get("/get-picture/")
