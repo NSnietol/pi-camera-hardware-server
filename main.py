@@ -29,7 +29,6 @@ def settings():
         allow_headers=["*"],
     )
 
-
 app = FastAPI()
 settings()
 checking_thread= threading.Thread(target=check_movements)
@@ -62,13 +61,5 @@ async def main():
              
                     """
     return HTMLResponse(content=content)
-
-
-if __name__ == '__main__':
-    x = threading.Thread(target=check_movements)
-    x.start()
-    logger.info('uvicorn')
-    uvicorn.run(app)
-    logger.info('End')
 
 

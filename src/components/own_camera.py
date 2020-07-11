@@ -2,6 +2,7 @@ from time import sleep
 from picamera import PiCamera
 from loguru import logger
 import os
+SLEEP_TIME = os.environ.get('SLEEP_TIME') if 'SLEEP_TIME' in os.environ else 1
 
 
 def take_picture():
@@ -11,7 +12,7 @@ def take_picture():
     camera.start_preview()
     # Camera warm-up time
     remove_old_file()
-    sleep(1)
+    sleep(int(SLEEP_TIME))
     camera.capture('matricula.jpg')
     logger.info("it took the picture")
     camera.close()

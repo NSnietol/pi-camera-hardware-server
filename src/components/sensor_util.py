@@ -4,12 +4,15 @@ from loguru import logger
 import os
 import requests
 from src.components.own_camera import take_picture
-
 from http import HTTPStatus
+
+SLEEP_TIME = os.environ.get('SLEEP_TIME') if 'SLEEP_TIME' in os.environ else 1
+PIN = os.environ.get('PIN') if 'PIN' in os.environ else 8
+
 
 IO.setwarnings(False)
 IO.setmode(IO.BOARD)
-IO.setup(8, IO.IN)
+IO.setup(int(PIN), IO.IN)
 
 
 def check_movements():
@@ -20,8 +23,8 @@ def check_movements():
                 logger.info("Obstacle detected !!")
                 take_picture()
                 notify_by_picture()
-                time.sleep(1)           
-            time.sleep(1)
+                time.sleep(int(SLEEP_TIME))           
+            time.sleep(int(SLEEP_TIME))
         except Exception as e:
             logger.info("Error looking out movements")
             logger.exception(e)
