@@ -17,3 +17,5 @@ python-multipart==0.0.5
 RPi.GPIO==0.7.0
 
 picamera==1.13
+
+request===2.24.0
