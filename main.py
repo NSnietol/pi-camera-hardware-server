@@ -8,9 +8,9 @@ import uvicorn
 import threading
 import time
 
-from src.components.own_camera import take_picture,access
+from src.components.own_camera import take_picture
 from fastapi.responses import FileResponse
-from src.components.sensor_util import check_movements
+from src.components.sensor_util import check_movements,access
 
 
 def settings():

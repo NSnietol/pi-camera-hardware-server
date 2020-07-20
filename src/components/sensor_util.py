@@ -15,8 +15,8 @@ PIN_BLUE_LED = os.environ.get('PIN_BLUE_LED') if 'PIN_BLUE_LED' in os.environ el
 IO.setwarnings(False)
 IO.setmode(IO.BOARD)
 IO.setup(int(PIN_SENSOR), IO.IN)
-IO.setup(int(PIN_SENSOR), IO.OUT)
-IO.setup(int(PIN_SENSOR), IO.OUT)
+IO.setup(int(PIN_RED_LED), IO.OUT)
+IO.setup(int(PIN_BLUE_LED), IO.OUT)
 
 
 def check_movements():
@@ -36,7 +36,7 @@ def check_movements():
 def access():
     IO.output(PIN_BLUE_LED,True)
     IO.output(PIN_RED_LED,False)
-    time.sleep(2)
+    time.sleep(3)
     IO.output(PIN_BLUE_LED,False)
     IO.output(PIN_RED_LED,True)   
 
