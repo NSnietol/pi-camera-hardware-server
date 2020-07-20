@@ -8,7 +8,7 @@ import uvicorn
 import threading
 import time
 
-from src.components.own_camera import take_picture
+from src.components.own_camera import take_picture,access
 from fastapi.responses import FileResponse
 from src.components.sensor_util import check_movements
 
@@ -45,6 +45,7 @@ async def get_picture_controller():
 @app.get("/unlock/")
 async def unlock_door():
     logger.info("Opening door in progress ...")
+    access()
     return {"message": "Door opened"}
 
 @app.get("/")
